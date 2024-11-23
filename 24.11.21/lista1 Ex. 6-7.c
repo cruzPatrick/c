@@ -15,17 +15,94 @@ void questao6(int dias){
     dia = dias%7;
     printf("%d semanas e %d dias", semana, dia);
 }
-
-void questao7 (float valdese){
-    
+/*
+códigos que estavam errados da questao 7, mas fiz 
+void questao7 (int saque){ primeira tentativa
+    int valor, resto;
+    resto = saque % 100;
+    valor = saque/100; 
+    resto += (valor%50);
+    valor = saque / 50;
+    resto += (valor%20);
+    valor = saque / 20;
+    resto += (valor%10);
+    valor = saque / 10;
+    resto += (valor%5);
+    valor = saque / 5;
+    resto += (valor%2);
+    valor = saque/1;
+    resto += (valor%1);
+    printf("A menor quantidade de cedulas será: %d", resto);
 }
-void main()
-{
-    int valordias;
-    float valor;
-    printf("Escreva o valor de dias do evento: ")
+int main(){
+
+    printf("Qual o valor que você quer sacar? ");
+    scanf("%d", &valor);
+    questao7(valor);
+    return 0;
+}
+
+
+
+void questao7 (int saque){ versao 2.0
+    int cedulas100 = saque/100;
+    int restante = saque%100;
+
+    int cedulas50 = restante/50;
+    restante = restante %50;
+
+    int cedulas20 = restante/20;
+    restante %= 20;
+
+    int cedulas10 = restante/10;
+    restante %= 10;
+
+    int cedulas5 = restante/5;
+    restante %= 5;
+
+    int cedulas2 = restante/2;
+    restante %= 2;
+
+    int cedulas = restante/1;
+    restante %=1;
+
+    int soma = cedulas100+cedulas50+cedulas20+cedulas10+cedulas5+cedulas2+cedulas;
+    printf("A menor quantidade de cedulas será: %d, para o valor %d", soma, saque);
+}
+ */
+
+void questao7 (int saque){
+    int cedulas100 = saque/100;
+    int restante = saque%100;
+
+    int cedulas50 = restante/50;
+    restante %= 50;
+
+    int cedulas20 = restante/20;
+    restante %= 20;
+
+    int cedulas10 = restante/10;
+    restante %= 10;
+
+    int cedulas5 = restante/5;
+    restante %= 5;
+
+    int cedulas2 = restante/2;
+    restante %= 2;
+
+    int cedulas = restante;
+
+    int soma = cedulas100+cedulas50+cedulas20+cedulas10+cedulas5+cedulas2+cedulas;
+    printf("A menor quantidade de cedulas sera: %d, para o valor %d", soma, saque);
+    printf("São:\n%d de 100\n%d de 50\n%d de 20\n%d de 10\n%d de 5\n%d de 2\n%d de 1", cedulas100, cedulas50, cedulas20, cedulas10, cedulas5, cedulas2, cedulas);
+}
+int main(){
+    int valordias, valor;
+    printf("Escreva o valor de dias do evento: ");
     scanf("%d", &valordias);
     questao6(valordias);
     printf("Qual o valor que você quer sacar? ");
-    scanf("%f", &valor)
+    scanf("%d", &valor);
+    questao7(valor);
+    return 0;
 }
