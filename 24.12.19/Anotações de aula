@@ -1,0 +1,139 @@
+arrays - vetores
+
+int array [1000] região de memoria que é quase um onibus
+
+array está numa região de memória e lá ele reserva 1000 células
+inicia-se de 0 e vai até 999
+
+formas de inicializar um array 
+  Método 1 (clássico):
+	int num[1000];
+	for (int i=0; i<1000; i++){
+		num[i]=0;
+	}
+    
+  Método 2:
+	int v[3] = {0};
+	
+Várias informções que o usuário não vai colocar de novo, pra isso que se usa array
+
+"a turma tem no max 30 aluno" = qtd de elementos que o array tem
+
+
+vetor e ponteiro são tipos compatíveis, pensar no array como um ponteiro do primeiro elemento daquele bloco daquele bloco que você alocou
+
+int main(){
+	int v [1000] = {0};
+	int *p = v;
+	v[0]=15;
+	printf("%d", p[0];
+	p = &v[20];
+
+}
+
+// toda modificação de array em uma função será percebida fora, porque array são ponteiros
+
+os códigos estão no pendrive
+
+Prof pediu pra programar isso:
+	 1)array com 10 int função que leia so int 
+	 2)função que retorne o maior elemento do array, pode ter empate, se tiver retorna 1 não todos 
+	 
+	 
+------------------------------------------------------------------------------------------------------------------------------------------------------------	 
+correção do prof
+
+
+#include <stdio.h>
+
+
+void learray (int v[], int n){
+    for(int i = 0; i<n; i++){
+        printf("Escreva os valores da celula %d: ", i+1);
+        scanf("%d", &v[i]);
+    }
+}
+
+int maiorvalor(int v[], int n){
+    int maior;
+    for (int i = 0; i<n; i++){
+        if(i==0||v[i]>maior)
+            maior = v[i];
+    }
+    return maior;
+}
+
+
+int busca(int v[], int n, int x){
+    for(int i = 0; i<n; i++){
+        if(v[i]==x){
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+void main(){
+    int vetor [5], val;
+    learray(vetor, 5);
+    printf("O maior valor é: %d", maiorvalor(vetor, 5));
+    printf("qual valor quer achar? ");
+    scanf("%d", &val);
+    printf("O valor %d está na célula %d do array", val, busca(vetor, 5, val));    
+    
+    
+}
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Meu errado
+
+#include <stdio.h>
+
+
+void learray (int v[], int n){
+    for(int i = 0; i<n; i++){
+        printf("Escreva os valores da celula %d: ", i+1);
+        scanf("%d", &v[i]);
+    }
+}
+
+int maiorvalor(int v[], int n){
+    int maior;
+    for (int i = 0; i<n; i++){
+        if(v[i]>v[i+1])
+            maior = v[i];
+            printf("%d", maior);
+    }
+    return maior;
+}
+
+
+int busca(int v[], int n, int x){
+    int val;
+    for(int i = 0; i<n; i++){
+        if(v[i]==x){
+            val = i;
+        }
+        else
+            val = -1;
+    }
+    return val;
+}
+
+
+void main(){
+    int vetor [5], val;
+    learray(vetor, 5);
+    //printf("O maior valor é: %d", maiorvalor(vetor, 5));
+    printf("qual valor quer achar? ");
+    scanf("%d", &val);
+    printf("O valor %d está na célula %d do array", val, busca(vetor, 5, val));    
+    
+    
+}
