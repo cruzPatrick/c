@@ -13,8 +13,7 @@ int main(int argc, char *argv[]) {
 		printf("child (pid:%d)\n", (int) getpid());
 	} else { // parent goes down this path
 		int rc_wait = wait(NULL);
-		printf("parent of %d (rc_wait:%d) (pid:%d)\n",
-		       rc, rc_wait, (int) getpid());
+		printf("parent of %d (rc_wait:%d) (pid:%d)\n", rc, rc_wait, (int) getpid());
 	}
 	return 0;
 }

@@ -14,8 +14,7 @@ int main(int argc, char *argv[]) {
 		printf("child (pid:%d)\n", (int) getpid());
 	} else {
 // parent goes down this path (main)
-		printf("parent of %d (pid:%d)\n",
-		       rc, (int) getpid());
+		printf("parent of %d (pid:%d)\n", rc, (int) getpid());
 	}
 	return 0;
 }
