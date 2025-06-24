@@ -8,6 +8,10 @@ struct no{
 typedef struct no* noPtr;
 using namespace std;
 
+void inserir(noPtr *);
+void retirar(noPtr *);
+void listar(noPtr);
+
 int main(int argc, char* argv[]){
     noPtr topo = NULL;
     int op, qtd=0;
