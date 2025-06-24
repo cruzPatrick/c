@@ -1,5 +1,5 @@
 #include <iostream>
-
+//código da prof com algumas modificações minhas
 struct no{
     int info;
     struct no* prox;
@@ -27,7 +27,7 @@ void main() {
     } while (op !=0); 
 }
 
-int inserir (noPtr * i, int * q) {
+int inserir (noPtr * i, int * q) { //O(n)
 //É uma lista circular? Acertar
     noPtr p = new no; 
     cout << "\nDigite o valor do elemento: "; 
@@ -48,13 +48,21 @@ int inserir (noPtr * i, int * q) {
     return *q;
 }
 
-void retirar (noPtr * i, int * q) {
+void retirar (noPtr * i, int * q) { //O(n)
     noPtr p = *i; 
-    if (!listaVazia(*i)) { 
-        if (*q == 1) 
+    if ((*i)!=NULL) { 
+        if (*q == 1)
             *i = NULL;
-        else 
+        else{
+            /* a ideia é fazer para o caso onde tem mais de 2, porque o de 1 já tá feito, mas não vira uma lista circular porque está faltando apontar pro inicio da lista, preciso rodar até o final e colocar para apontar pro primeiro valor
+            */
+            noPtr aux = *i;
+            while(aux->prox != *i)
+                aux = aux->prox;
+            aux->prox = p->prox;
             *i = p->prox; //*i = (*i)->prox;
+
+        }
         delete(p); 
         cout << "\nO elemento foi retirado da lista!\n"; 
         (*q) -= 1;
