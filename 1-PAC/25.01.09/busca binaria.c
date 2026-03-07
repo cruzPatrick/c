@@ -15,8 +15,8 @@ int buscabinaria(int v[], int qt, int want){
         int meio = (ini + fim)/2;
         if(v[meio] == want)
             return meio;
-        if(procurado>v[meio])
-            inicio = meio+1;
+        if(want>v[meio])
+            ini = meio+1;
         else
             fim = meio-1;
     }
