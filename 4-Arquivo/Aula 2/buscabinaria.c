@@ -32,7 +32,7 @@ int main(int argc, char **argv){
         return 1;
     }
 
-    fseek(f, 0, SEEK_END); //corta pro final, isso me diz o tamanho em bytes do arquivo 
+    fseek(f, 0, SEEK_END); //corta pro final, isso me diz o tamanho em bytes do arquivo
 
     long tamanhoBytes = ftell(f); // armazenando o tamanho do arquivo EM BYTES
     long tamanhoRegistros = tamanhoBytes/sizeof(Endereco); //Aqui eu pego o tamanho dos registros
