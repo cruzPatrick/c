@@ -1,0 +1,19 @@
+Q1 -
+
+primeiro a entrar será o ultimo a sair -> é uma lista encadeada -> first in, last out -> Pilha :D
+
+O que ela quer, basicamente uma FILA de pneus USANDO A STRUCT PNEUS
+	Ou seja, inserir um
+	remover todos, você pode fazer um for aqui ou while pneu*prox != NULL
+
+Q2 -
+
+	Fazer chinês, resumo, faz como se tivesse um printf a cada linha e no final escreva somente os que tiverem cout
+
+Q3 -
+
+	Busca Binária -> A marina já fez a boa pra mostrar o que seria
+
+Q4 -
+	
+	Insertion sort que foi dado na minha turma
