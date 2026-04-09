@@ -14,7 +14,7 @@ int main(int argc, char** argv){
     }
 
     while(fread(&aux,sizeof(char), 1, f) == 1){
-        saldo+= (aux == '{')? +1 : (aux == '}')? -1: 0;
+        saldo += (aux == '{')? +1 : (aux == '}')? -1: 0;
         if(saldo<0)
             break;
     }
