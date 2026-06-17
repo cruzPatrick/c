@@ -49,13 +49,52 @@ float totalPesoCuritiba = 0;
 int contadorTeresina = 0;
 int contadorCuritiba = 0;
 int anoBusca = 2015;
+//que eu fiz
+float mediaCuritiba = 0;
+float mediaTeresina = 0;
+int prematuraT = 0;
+int prematuroC = 0;
+int parto1 = 0;
+int parto2 = 0;
+int parto9 = 0;
 
 void processa(struct DadosNascimento* dn) {
     int dia, mes, ano;
     separaData(dn->data_nasc, &dia, &mes, &ano);
     if(ano == anoBusca && dn->CODMUNRES == Teresina) {
         contadorTeresina++;
-    }  
+        totalPesoTeresina += dn->PESO;
+    }
+    if(ano == anoBusca && dn->CODMUNRES == Curitiba){
+        contadorCuritiba++;
+        totalPesoCuritiba += dn->PESO;
+    }
+    
+    //semana de gestação
+    if(ano == 2012 && dn->CODMUNRES == Teresina && dn->SEMAGESTAC < 37) {
+        prematuraT++;
+    }
+    if(ano == 2012 && dn->CODMUNRES == Curitiba && dn->SEMAGESTAC < 37) {
+        prematuroC++;
+    }
+
+
+    if(ano == anoBusca && (dn->CODMUNRES == Teresina || dn->CODMUNRES == Curitiba)) {//prof não específica, vou de 2015 e coloquei de ambas
+        switch(dn->PARTO) {
+            case 1:
+                parto1++;
+                break;
+            case 2:
+                parto2++;
+                break;
+            case 9:
+                parto9++;
+                break;
+            default:
+                break;
+        }
+    }
+
 //    printf("%d %d %d %d\n",dn->CODMUNRES, dia, mes, ano);
 }
 
@@ -65,10 +104,10 @@ int main()
     int lc = 0;
     static char buffer[MAX];
     struct DadosNascimento dn;
-    char* linha[18];
+    char* linha[18]; //Array com 18 ponteiros para char -> Ele não guarda os textos, mas o endereço deles, por isso 18, 18 endereços diferentes
     int i;
     FILE *f = fopen("sinasc.csv","r");
-    fgets(buffer,MAX,f);
+    fgets(buffer,MAX,f); // ele lê até encontrar o \n, ou seja, a linha toda ou até o limite estourar, que é 2k, guarda a linha no buffer
     fgets(buffer,MAX,f);
     while(!feof(f)) {
         linha[0] = strtok_r(buffer,",\n",&prox);
@@ -104,6 +143,8 @@ int main()
             fflush(stdout);
         }
     }
+    mediaCuritiba = totalPesoCuritiba / contadorCuritiba;
+    mediaTeresina = totalPesoTeresina / contadorTeresina;
     fclose(f);
     printf("Contador Teresina: %d\n",contadorTeresina);
     printf("Total Lido: %d\n",lc);
